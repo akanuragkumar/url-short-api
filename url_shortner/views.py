@@ -41,6 +41,6 @@ class KeyMetaData(APIView):
 
     def post(self, request):
         """GetMetaData of keys."""
-        keyword = request.data.get('keyword')
-        resp = UrlModifier.search_similar_url(keyword)
+        key = request.data.get('key')
+        resp = UrlModifier.get_metadata(key)
         return Response(status=status.HTTP_202_ACCEPTED, data=resp)
