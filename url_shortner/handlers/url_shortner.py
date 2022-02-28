@@ -25,6 +25,11 @@ class UrlModifier:
         uuid = link[-5:]
         try:
             url_details = Url.objects.get(uuid=uuid)
+            total_hit = url_details.total_hit
+            total_hourly_hit = url_details.hourly_hit
+            url_details.total_hit = total_hit + 1
+            url_details.hourly_hit = total_hourly_hit + 1
+            url_details.save()
             return url_details.link
         except Url.DoesNotExist:
             return {'error': 'This url does not exist.'}
