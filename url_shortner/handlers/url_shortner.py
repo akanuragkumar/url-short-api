@@ -45,7 +45,7 @@ class UrlModifier:
     @staticmethod
     def get_metadata(key):
         try:
-            url_details = Url.objects.get(uuid=uuid)
+            url_details = Url.objects.get(uuid=key)
             return {'total_hits': url_details.total_hit,
                     'hourly_hits': url_details.hourly_hit}
         except Url.DoesNotExist:
