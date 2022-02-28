@@ -1,6 +1,8 @@
 # url-short-api
 Url shortner in restful APIs
 
+Restful API hosted in heroku - https://url-shortner-anurag.herokuapp.com
+
 ## Approach
 This Service has mainly 4 API endpoints for shortening the url, redirecting to original url, search based on keywords and metadata of url.
 If for a particular url, entry alreday exists in db then we share the same and not create another duplicate entry.
