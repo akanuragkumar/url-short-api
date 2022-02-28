@@ -32,7 +32,7 @@ class UrlModifier:
     @staticmethod
     def search_similar_url(key):
         try:
-            results = Url.objects.filter(string__icontains=key).values_list('link', flat=True)
+            results = Url.objects.filter(link__icontains=key).values_list('link', flat=True)
             return {'link_list': results}
         except Url.DoesNotExist:
             return {'error': 'This keyword does not exist.'}
