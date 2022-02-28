@@ -1,8 +1,9 @@
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from shortner.models import Url
 import uuid
+
+from url_shortner.models import Url
 
 
 class UrlShortnerView(APIView):
@@ -17,6 +18,7 @@ class UrlShortnerView(APIView):
         new_url = Url(link=link, uuid=uid)
         new_url.save()
         return Response(status=status.HTTP_202_ACCEPTED, data={"shortened_url": uid})
+        pass
 
 
 # def final(request, pk):
