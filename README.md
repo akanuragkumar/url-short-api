@@ -25,11 +25,12 @@ To work in a sandboxed Python environment it is recommended to install the app i
    ```bash
    $ manage.py makemigrations 
    $ python manage.py migrate
+   $ python manage.py crontab add
    $ python manage.py runserver
    ``` 
    
    
 ## API Documentation 
 
-### `https://documenter.getpostman.com/view/18135865/UVkqruNY` 
+`https://documenter.getpostman.com/view/18135865/UVkqruNY` 
 
