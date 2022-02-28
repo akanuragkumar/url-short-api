@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import json
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,14 +78,16 @@ WSGI_APPLICATION = 'url_short_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+env_data = json.loads(os.environ['secrets'])
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd92a234ocho7h5',
-        'USER': 'armqugxjzonbdg',
-        'PASSWORD': '5e47355403d4e003ccc8e89d99bbfa7dabeaad5281ca1772f89759a99c70623a',
-        'HOST': 'ec2-44-194-113-156.compute-1amazonaws.com',
-        'PORT':  '5432'
+        'ENGINE': env_data.get('DATABASE_SECRETS').get('ENGINE'),
+        'NAME': env_data.get('DATABASE_SECRETS').get('NAME'),
+        'USER': env_data.get('DATABASE_SECRETS').get('USER'),
+        'PASSWORD': env_data.get('DATABASE_SECRETS').get('PASSWORD'),
+        'HOST': env_data.get('DATABASE_SECRETS').get('HOST'),
+        'PORT': env_data.get('DATABASE_SECRETS').get('PORT'),
     }
 }
 
