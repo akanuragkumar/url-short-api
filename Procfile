@@ -1,1 +1,1 @@
-web gunicorn urlshortner.wsgi:application --log-file -
+web gunicorn url_short_api.wsgi:application --log-file -
