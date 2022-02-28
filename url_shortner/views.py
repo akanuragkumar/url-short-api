@@ -2,10 +2,8 @@ from django.shortcuts import redirect
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-import uuid
 
 from url_shortner.handlers.url_shortner import UrlModifier
-from url_shortner.models import Url
 
 
 class UrlShortnerView(APIView):
@@ -15,7 +13,7 @@ class UrlShortnerView(APIView):
         """Short-ner url."""
         link = request.data.get('link')
         resp = UrlModifier.url_shortner(link)
-        return Response(status=status.HTTP_202_ACCEPTED, data={resp})
+        return Response(status=status.HTTP_202_ACCEPTED, data=resp)
 
 
 class ReDirectUrl(APIView):
@@ -35,4 +33,4 @@ class SearchKeyword(APIView):
         """Search to original url."""
         keyword = request.data.get('keyword')
         resp = UrlModifier.search_similar_url(keyword)
-        return Response(status=status.HTTP_202_ACCEPTED, data={resp})
+        return Response(status=status.HTTP_202_ACCEPTED, data=resp)
