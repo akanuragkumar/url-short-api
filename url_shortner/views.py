@@ -34,3 +34,13 @@ class SearchKeyword(APIView):
         keyword = request.data.get('keyword')
         resp = UrlModifier.search_similar_url(keyword)
         return Response(status=status.HTTP_202_ACCEPTED, data=resp)
+
+
+class KeyMetaData(APIView):
+    """GetMetaData of keys."""
+
+    def post(self, request):
+        """GetMetaData of keys."""
+        keyword = request.data.get('keyword')
+        resp = UrlModifier.search_similar_url(keyword)
+        return Response(status=status.HTTP_202_ACCEPTED, data=resp)

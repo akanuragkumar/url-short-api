@@ -41,3 +41,12 @@ class UrlModifier:
             return {'link_list': results}
         except Url.DoesNotExist:
             return {'error': 'This keyword does not exist.'}
+
+    @staticmethod
+    def get_metadata(key):
+        try:
+            url_details = Url.objects.get(uuid=uuid)
+            return {'total_hits': url_details.total_hit,
+                    'hourly_hits': url_details.hourly_hit}
+        except Url.DoesNotExist:
+            return {'error': 'This key does not exist.'}
