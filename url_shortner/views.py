@@ -15,10 +15,9 @@ class UrlShortnerView(APIView):
         if ("http://" not in link) and ("https://" not in link):
             link = "http://" + link
         uid = str(uuid.uuid4())[:5]
-        new_url = Url(link=link, uuid=uid)
-        new_url.save()
-        return Response(status=status.HTTP_202_ACCEPTED, data={"shortened_url": uid})
-        pass
+        Url.objects.create(link=link, uuid=uid)
+        new_url = 'https://url-shortner-anurag.herokuapp.com/' + uid
+        return Response(status=status.HTTP_202_ACCEPTED, data={"shortened_url": new_url})
 
 
 # def final(request, pk):
